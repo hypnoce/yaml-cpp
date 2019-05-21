@@ -1,8 +1,8 @@
 set(gtest_force_shared_crt ${MSVC_SHARED_RT} CACHE BOOL
   "Use shared (DLL) run-time lib even when Google Test built as a static lib.")
-add_subdirectory(gtest-1.8.0)
-include_directories(SYSTEM gtest-1.8.0/googlemock/include)
-include_directories(SYSTEM gtest-1.8.0/googletest/include)
+add_subdirectory(gtest-1.8.1)
+include_directories(SYSTEM gtest-1.8.1/googlemock/include)
+include_directories(SYSTEM gtest-1.8.1/googletest/include)
 
 if(WIN32 AND BUILD_SHARED_LIBS)
   add_definitions("-DGTEST_LINKED_AS_SHARED_LIBRARY")
@@ -30,7 +30,7 @@ file(GLOB test_new_api_sources new-api/[a-z]*.cpp)
 list(APPEND test_sources ${test_new_api_sources})
 add_sources(${test_sources} ${test_headers})
 
-include_directories(${YAML_CPP_SOURCE_DIR}/test)
+include_directories(${yaml-cpp_SOURCE_DIR}/test ${yaml-cpp_SOURCE_DIR}/src)
 
 add_executable(run-tests
 	${test_sources}
